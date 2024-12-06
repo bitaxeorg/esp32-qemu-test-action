@@ -1,34 +1,21 @@
-FROM espressif/idf:release-v4.3
+FROM espressif/idf:v5.4
 
 ARG DEBIAN_FRONTEND=nointeractive
 
-RUN apt-get update \
-  && apt install -y -q \
-  cmake \
-  git \
-  libglib2.0-0 \
-  libnuma1 \
-  libpixman-1-0 \
-  ruby
-
-RUN ./opt/esp/entrypoint.sh && pip install --no-cache-dir idf-component-manager
-
 # QEMU
-ENV QEMU_REL=esp-develop-20210220
-ENV QEMU_SHA256=44c130226bdce9aff6abf0aeaab44f09fe4f2d71a5f9225ac1708d68e4852c02
-ENV QEMU_DIST=qemu-${QEMU_REL}.tar.bz2
-ENV QEMU_URL=https://github.com/espressif/qemu/releases/download/${QEMU_REL}/${QEMU_DIST}
+ENV ESP_QEMU_RELEASE=esp-develop-9.0.0-20240606
+ENV ESP_QEMU_DIST=qemu-xtensa-softmmu-esp_develop_9.0.0_20240606-x86_64-linux-gnu.tar.xz
+ENV ESP_QEMU_URL=https://github.com/espressif/qemu/releases/download/${ESP_QEMU_RELEASE}/${ESP_QEMU_DIST}
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
-ENV IDF_PYTHON_ENV_PATH=/opt/esp/python_env/idf4.4_py3.8_env
+ENV IDF_PYTHON_export_PATH=/opt/esp/python_export/idf5.3_py3.10_export
 
-RUN wget --no-verbose ${QEMU_URL} \
-  && echo "${QEMU_SHA256} *${QEMU_DIST}" | sha256sum --check --strict - \
-  && tar -xf $QEMU_DIST -C /opt \
-  && rm ${QEMU_DIST}
+RUN wget --no-verbose ${ESP_QEMU_URL} \
+  && tar -xf ${ESP_QEMU_DIST} -C /opt \
+  && rm ${ESP_QEMU_DIST}
 
-ENV UNITY_REL=v2.5.2
+ENV UNITY_REL=v2.6.0
 ENV UNITY_DIST=${UNITY_REL}.tar.gz
 ENV UNITY_URL=https://github.com/ThrowTheSwitch/Unity/archive/refs/tags/${UNITY_DIST}
 
