@@ -3,7 +3,7 @@ FROM espressif/idf:v5.4
 ARG DEBIAN_FRONTEND=nointeractive
 
 # QEMU
-ENV ESP_QEMU_RELEASE=esp-develop-9.2.2_20250228
+ENV ESP_QEMU_RELEASE=esp-develop-9.2.2-20250228
 ENV ESP_QEMU_DIST=qemu-xtensa-softmmu-esp_develop_9.2.2_20250228-x86_64-linux-gnu.tar.xz
 ENV ESP_QEMU_URL=https://github.com/espressif/qemu/releases/download/${ESP_QEMU_RELEASE}/${ESP_QEMU_DIST}
 
