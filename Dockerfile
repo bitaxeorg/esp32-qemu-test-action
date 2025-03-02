@@ -4,7 +4,7 @@ ARG DEBIAN_FRONTEND=nointeractive
 
 # QEMU
 ENV ESP_QEMU_RELEASE=esp-develop-9.0.0-20240606
-ENV ESP_QEMU_DIST=qemu-xtensa-softmmu-esp_develop_9.0.0_20240606-x86_64-linux-gnu.tar.xz
+ENV ESP_QEMU_DIST=qemu-xtensa-softmmu-esp_develop_9.2.2_20250228-x86_64-linux-gnu.tar.xz
 ENV ESP_QEMU_URL=https://github.com/espressif/qemu/releases/download/${ESP_QEMU_RELEASE}/${ESP_QEMU_DIST}
 
 ENV LC_ALL=C.UTF-8
