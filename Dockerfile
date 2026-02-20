@@ -1,4 +1,4 @@
-FROM espressif/idf:v5.5.1
+FROM espressif/idf:v5.5.2
 
 ARG DEBIAN_FRONTEND=nointeractive
 
@@ -15,7 +15,7 @@ RUN wget --no-verbose ${ESP_QEMU_URL} \
   && tar -xf ${ESP_QEMU_DIST} -C /opt \
   && rm ${ESP_QEMU_DIST}
 
-ENV UNITY_REL=v2.6.0
+ENV UNITY_REL=v2.6.1
 ENV UNITY_DIST=${UNITY_REL}.tar.gz
 ENV UNITY_URL=https://github.com/ThrowTheSwitch/Unity/archive/refs/tags/${UNITY_DIST}
 
