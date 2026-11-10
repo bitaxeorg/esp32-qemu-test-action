@@ -7,8 +7,16 @@ inputs:
   path:
     description: 'Relative path under $GITHUB_WORKSPACE to place the repository'
     default: ''
+  memory:
+    description: 'Emulated PSRAM size in megabytes'
+    default: '4'
+  octal_psram:
+    description: 'Emulate octal PSRAM; set memory to 8 to match ESP32-S3 devices with 8 MB octal PSRAM'
+    default: 'false'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.path }}
+    - ${{ inputs.memory }}
+    - ${{ inputs.octal_psram }}
