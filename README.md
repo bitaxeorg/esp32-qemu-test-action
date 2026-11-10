@@ -6,6 +6,11 @@
 5. Action converts Unity output to JUnit report.xml;
 6. You can feed report.xml to another action to publish test resuls;
 
+## Inputs
+* `path` - relative path under `$GITHUB_WORKSPACE` to the project (default `''`)
+* `memory` - emulated PSRAM size in megabytes (default `'4'`)
+* `octal_psram` - emulate octal PSRAM; use `'true'` together with `memory: '8'` for ESP32-S3 devices with 8 MB octal PSRAM (default `'false'`)
+
 ## Example workflow with results publishing
 ```
 name: Test
